@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Password</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1 class="redteam">Great Job, Red Team!</h1>
+    <h2>Clue #1</h2>
+      
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper ac lectus et scelerisque. Integer massa lacus, dignissim non iaculis a, scelerisque rutrum tellus. Suspendisse potenti. Vestibulum feugiat neque id dolor pharetra sodales. Nunc turpis leo, tempus ut luctus at, tincidunt quis lacus. Fusce rutrum metus ac purus dapibus, quis convallis ligula tempus. Donec gravida rutrum diam, id porttitor ligula bibendum non.
+        </p>
+
+  <h2>Enter the password to unlock the next clue</h2>
+  <input type="text" id="password" placeholder="Enter password" />
+  <br>
+  <button class="red-button" onclick="checkPassword()">Submit</button>
+
+  <div id="error"></div>
+  <div id="clue">
+    🎉 You did it! Here's your clue:<br />
+    <strong>"Look beneath the rug in the hallway."</strong>
+    <br><br>
+    <a href="clue2.html" id="nextLink">➡️ Click here when you're ready for the next clue</a>
+  </div>
+  
+  <footer id="footer">
+    <a href="index.html">Back to Home</a>
+</footer>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      const correctPassword = "secret123";
+      const clue = document.getElementById("clue");
+      const error = document.getElementById("error");
+
+      if (input.toLowerCase() === correctPassword.toLowerCase()) {
+        clue.style.display = "block";
+        error.textContent = "";
+      } else {
+        clue.style.display = "none";
+        error.textContent = "Incorrect password. Try again.";
+      }
+    }
+
+    // Optional: allow pressing Enter key to submit
+    document.getElementById("password").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        checkPassword();
+      }
+    });
+  </script>
+
+</body>
+</html>
