@@ -10,6 +10,7 @@ body {
   .page-content {
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-bottom: 4rem;
   }  
 
   h1 {
@@ -128,7 +129,7 @@ a {
     padding-top: 2rem;
   }
 
-  #footer {
+  /* #footer {
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -150,5 +151,5 @@ a {
   
   #footer a:hover {
     text-decoration: underline;
-  }
+  } */
   
