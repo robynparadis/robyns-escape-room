@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-
+  <div class="page-content">
   <h1 class="redteam">You're Doing It, Red Team!</h1>
     <h2>Clue #4</h2>
       
@@ -32,10 +32,11 @@
   <div id="clue">
     <a href="/RedTeam/red-clue-5.html" id="nextLink">🎉 You did it! Click here to move on.</a>
   </div>
+  </div>
   
   <footer id="footer">
     <a href="index.html">Home</a>
-    <a href="rules.html"></a> Rules </a>
+    <a href="rules.html">Rules</a>
 </footer>
 
 <script>
@@ -57,11 +58,13 @@
     if (input.toLowerCase() === correctPassword.toLowerCase()) {
       clue.style.display = "block";
       error.textContent = "";
+      clue.scrollIntoView({ behavior: "smooth" });
     } else {
       clue.style.display = "none";
       // Show rotating incorrect messages
       error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
       incorrectAttemptCount++;
+      error.scrollIntoView({ behavior: "smooth" });
     }
   }
 
