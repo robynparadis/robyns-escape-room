@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Password</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1 class="blueteam">Great Job, Blue Team!</h1>
+    <h2>Clue #1</h2>
+      
+        <p>
+          You're moving along at a good pace, but I still don't think you'll be able to escape. Red Team is on your heels, and they're probably smarter than you. <br><br>After all, my favorite person is on their team...
+        </p>
+
+  <h2>Enter the password to unlock the next clue</h2>
+  <input type="text" id="password" placeholder="Enter password" />
+  <br>
+  <button class="blue-button" onclick="checkPassword()">Submit</button>
+
+  <div id="error"></div>
+  <div id="clue">
+    🎉 You did it! Here's your clue:<br />
+    <strong>"Look beneath the rug in the hallway."</strong>
+    <br><br>
+    <a href="clue2.html" id="nextLinkblue">➡️ Click here when you're ready for the next clue</a>
+  </div>
+  
+  <footer id="footer">
+    <a href="index.html">Home</a>
+    <a href="rules.html"></a> Rules </a>
+</footer>
+
+<script>
+  let incorrectAttemptCount = 0; // Track the number of incorrect attempts
+
+  const incorrectMessages = [
+    "Incorrect password. Try again.",
+    "Still wrong. Think harder.",
+    "Nope. You suck.",
+    "That's not it either. Are you sure you even know me?"
+  ];
+
+  function checkPassword() {
+    const input = document.getElementById("password").value;
+    const correctPassword = "purple";
+    const clue = document.getElementById("clue");
+    const error = document.getElementById("error");
+
+    if (input.toLowerCase() === correctPassword.toLowerCase()) {
+      clue.style.display = "block";
+      error.textContent = "";
+    } else {
+      clue.style.display = "none";
+      // Show rotating incorrect messages
+      error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+      incorrectAttemptCount++;
+    }
+  }
+
+  // Optional: allow pressing Enter key to submit
+  document.getElementById("password").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      checkPassword();
+    }
+  });
+</script>
+</body>
+
+</body>
+</html>

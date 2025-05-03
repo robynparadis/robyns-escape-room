@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Team Clue 6</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <h1 class="redteam">Excellent Work, Red Team!</h1>
+    <h2>Clue #6</h2>
+      
+        <p>
+          You absolute FOOLS. You think you can outsmart me? Good luck finding <span class="italic">this</span> location! I'm only giving you two lines this time.
+        </p>
+
+        <p class="good-info">
+            <strong>Here's your next clue:</strong><br><br>
+            “Cold and quiet, sealed up tight,<br>
+            Where day stays dark instead of light,<br>
+            Within the frost, your path gets clearer-<br>
+            The clue you seek is chillingly nearer."<br>
+        </p>
+
+  <h2>Enter the password to unlock the next clue</h2>
+  <input type="text" id="password" placeholder="Enter password" />
+  <br>
+  <button class="red-button" onclick="checkPassword()">Submit</button>
+
+  <div id="error"></div>
+  <div id="clue">
+    <a href="/RedTeam/red-clue-7.html" id="nextLink">🎉 You did it! Click here to move on.</a>
+  </div>
+  
+  <footer id="footer">
+    <a href="index.html">Home</a>
+    <a href="rules.html"></a> Rules </a>
+</footer>
+
+<script>
+  let incorrectAttemptCount = 0; // Track the number of incorrect attempts
+
+  const incorrectMessages = [
+    "Incorrect password. Try again.",
+    "Still wrong. Think harder.",
+    "Nope. You suck.",
+    "That's not it either. Are you sure you even know me?"
+  ];
+
+  function checkPassword() {
+    const input = document.getElementById("password").value;
+    const correctPassword = "pool";
+    const clue = document.getElementById("clue");
+    const error = document.getElementById("error");
+
+    if (input.toLowerCase() === correctPassword.toLowerCase()) {
+      clue.style.display = "block";
+      error.textContent = "";
+    } else {
+      clue.style.display = "none";
+      // Show rotating incorrect messages
+      error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+      incorrectAttemptCount++;
+    }
+  }
+
+  // Optional: allow pressing Enter key to submit
+  document.getElementById("password").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      checkPassword();
+    }
+  });
+</script>
+
+</body>
+</html>

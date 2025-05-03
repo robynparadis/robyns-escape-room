@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hi, Red Team!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,58 +13,72 @@
         <p>
             Welcome to the game.
 
-            Thank you for being part of my 31st birthday, and for spending yet another year with me on our annual cabin trips. It means more than you know.
+            Thank you for being part of my 31st birthday, and for spending another year with me on our annual cabin trip. It means more than you know.
             <br><br>
-            But this year, things are... different.
+            But this year, things are a bit different.
             
-            The puzzles ahead were made with me in mind. Knowing how I think will help you. But don't rely on that alone — wit, instinct, and cleverness will be just as vital.
+            The puzzles ahead were made with me in mind. Knowing about lil 'ol me will help you to move quickly. But instincts, cleverness, and having paid attention to your surroundings over the past couple of days will help just as much.
             <br><br>
-            Some clues will feel familiar. Others… might not.
+            Some clues will feel familiar. Others might not, until you unlock further information.
             <br><br>
             Good luck.
            
             You're going to need it.
         </p>
 
-        <h2>Enter the password to unlock the first clue</h2>
+        <p class="good-info">
+          To unlock your first clue, <br>go to the <strong>pool table</strong>. 🎱
+        </p>
+
+        <h2>Enter the correct password to unlock the next clue</h2>
         <input type="text" id="password" placeholder="Enter password" />
         <br>
         <button class="red-button" onclick="checkPassword()">Submit</button>
       
         <div id="error"></div>
         <div id="clue">
-          🎉 You did it! Here's your clue:<br />
-          <strong>"Look beneath the rug in the hallway."</strong>
-          <br><br>
-          <a href="red-clue-1.html" id="nextLink">➡️ Click here when you're ready for the next clue</a>
+          <a href="RedTeam/red-clue-1.html" id="nextLink">🎉 You did it! Click here to move on.</a>
         </div>
         
         <footer id="footer">
-            <a href="index.html">Back to Home</a>
-        </footer>
+          <a href="index.html">Home</a>
+          <a href="rules.html"></a> Rules </a>
+      </footer>
 
-        <script>
-          function checkPassword() {
-            const input = document.getElementById("password").value;
-            const correctPassword = "secret123";
-            const clue = document.getElementById("clue");
-            const error = document.getElementById("error");
+      <script>
+        let incorrectAttemptCount = 0; // Track the number of incorrect attempts
       
-            if (input.toLowerCase() === correctPassword.toLowerCase()) {
-              clue.style.display = "block";
-              error.textContent = "";
-            } else {
-              clue.style.display = "none";
-              error.textContent = "Incorrect password. Try again.";
-            }
+        const incorrectMessages = [
+          "Incorrect password. Try again.",
+          "Still wrong. Think harder.",
+          "Nope. You suck.",
+          "That's not it either. Are you sure you even know me?"
+        ];
+      
+        function checkPassword() {
+          const input = document.getElementById("password").value;
+          const correctPassword = "vatpub";
+          const clue = document.getElementById("clue");
+          const error = document.getElementById("error");
+      
+          if (input.toLowerCase() === correctPassword.toLowerCase()) {
+            clue.style.display = "block";
+            error.textContent = "";
+          } else {
+            clue.style.display = "none";
+            // Show rotating incorrect messages
+            error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+            incorrectAttemptCount++;
           }
+        }
       
-          // Optional: allow pressing Enter key to submit
-          document.getElementById("password").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-              checkPassword();
-            }
-          });
-        </script>
+        // Optional: allow pressing Enter key to submit
+        document.getElementById("password").addEventListener("keypress", function(e) {
+          if (e.key === "Enter") {
+            checkPassword();
+          }
+        });
+      </script>
+      
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Check</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Find the Hidden Clue</h2>
+  <p>When you think you're in the right spot, press the button:</p>
+  <button onclick="checkLocation()">Check My Location</button>
+  <p id="result"></p>
+
+  <script>
+    const targetLat = 50.5955; // Replace with your location
+    const targetLng = -114.0420;
+    const radius = 20; // Meters of allowable distance
+
+    function checkLocation() {
+      if (!navigator.geolocation) {
+        document.getElementById("result").textContent = "Geolocation is not supported by your browser.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+          const distance = getDistanceFromLatLonInMeters(userLat, userLng, targetLat, targetLng);
+
+          if (distance <= radius) {
+            document.getElementById("result").textContent = "✅ You're in the right spot! Here's your clue: 'Look beneath the bench...'";
+          } else {
+            document.getElementById("result").textContent = `❌ You're about ${Math.round(distance)} meters away. Try moving around.`;
+          }
+        },
+        () => {
+          document.getElementById("result").textContent = "Unable to retrieve your location.";
+        }
+      );
+    }
+
+    // Haversine formula to calculate distance
+    function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
+      const R = 6371000; // Earth radius in meters
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+  </script>
+</body>
+</html>

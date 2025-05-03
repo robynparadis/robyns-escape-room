@@ -84,7 +84,19 @@ a {
     font-size: 1.2rem;
   }
 
-  #nextLink {
+  #good-info {
+    margin-top: 2rem;
+    color: green;
+    font-size: 1.2rem;
+    background-color: antiquewhite;
+    padding: 3rem;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  #nextLinkblue {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
@@ -93,8 +105,15 @@ a {
     text-decoration: none;
     border-radius: 5px;
   }
-  #nextLink:hover {
-    background-color: #0056b3;
+
+  #nextLinkred {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
   }
 
   .redteam {
@@ -102,7 +121,11 @@ a {
   }
 
   .blueteam {
-    color: #1e88e5;;
+    color: #1e88e5;
+  }
+
+  li {
+    padding-top: 2rem;
   }
 
   #footer {
@@ -121,6 +144,10 @@ a {
   #footer a {
     color: white;
     text-decoration: none;
+  }
+
+  #footer a:last-child {
+    padding-left: 3rem;
   }
   
   #footer a:hover {
