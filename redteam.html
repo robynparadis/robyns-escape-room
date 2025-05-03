@@ -78,6 +78,13 @@
             checkPassword();
           }
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
+          const footer = document.getElementById('footer');
+          const footerHeight = footer.offsetHeight;
+          document.body.style.paddingBottom = `${footerHeight + 20}px`; // 20px buffer
+        });
+
       </script>
       
 </body>
