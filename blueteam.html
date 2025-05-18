@@ -27,8 +27,8 @@
           You're going to need it.
         </p>
 
-        <p id="good-info">
-          To unlock your first clue, <br>go to the <strong>patio set</strong>. ⛱️
+        <p class="good-info">
+          To unlock your first clue, <br>go to the <strong>patio set outside</strong>. ⛱️
         </p>
 
         <h2>Enter the correct password to unlock the next clue</h2>
@@ -38,15 +38,11 @@
       
         <div id="error"></div>
         <div id="clue">
-          🎉 You did it! Next up:<br />
-          <strong>“It spins, it swirls, it hums a tune,<br>
-            A chamber round where articles commune.<br>
-            If you seek what's tucked away,<br>
-            Look where the cycle has had its say.”</strong>
-          <br><br>
-          <a href="blue-clue-1.html" id="nextLinkblue">➡️ Click here when you're ready to move on</a>
+          <img src="Images/hi.png"><br>
+          <a href="BlueTeam/blue-clue-1.html" id="nextLink">🎉 You did it! Click here to move on.</a>
         </div>
       </div>
+
       <script>
         let incorrectAttemptCount = 0; // Track the number of incorrect attempts
       
@@ -66,6 +62,7 @@
           if (input.toLowerCase() === correctPassword.toLowerCase()) {
             clue.style.display = "block";
             error.textContent = "";
+
             clue.scrollIntoView({ behavior: "smooth" });
           } else {
             clue.style.display = "none";
@@ -82,6 +79,14 @@
             checkPassword();
           }
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
+          const footer = document.getElementById('footer');
+          const footerHeight = footer.offsetHeight;
+          document.body.style.paddingBottom = `${footerHeight + 20}px`; // 20px buffer
+        });
+
       </script>
+      
 </body>
 </html>
