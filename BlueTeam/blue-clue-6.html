@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Team Clue 1</title>
+  <title>Blue Team Clue 6</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="page-content">
-  <h1 class="blueteam">Great Job, Blue Team!</h1>
-    <h2>Clue #1</h2>
+  <h1 class="blueteam">Excellent Work, Blue Team!</h1>
+    <h2>Clue #6</h2>
        
         <p>
-          You're moving along at a good pace, but I still don't think you'll be able to escape. Red Team is on your heels, and they're probably smarter than you. <br><br>After all, my favorite person is on their team...
+            You absolute FOOLS. You think you can outsmart me? Good luck finding <span class="italic">this</span> location!
         </p>
 
         <p class="good-info">
           <strong>Here's the location where you'll find your next clue: </strong><br><br>
-          "If you've watched with care and steady pace,<br>
-          The answers hide in every space.<br>
-          Now follow the shuffle where the stakes will grow-<br>
-          Where the barrel breaks in two, below."
+          "Round and black, it spins with glee,<br>
+          The clue you need is where feet swing free."
         </p>
 
   <h2>Enter the password to unlock the next clue</h2>
@@ -30,8 +28,8 @@
 
   <div id="error"></div>
   <div id="clue">
-    <img src="../Images/laugh.png" alt="Image of Robyn laughing"><br>
-    <a href="blue-clue-2.html" id="nextLink">🎉 You did it! Click here to move on.</a>
+    <img src="../Images/cry.png"><br>
+    <a href="blue-clue-7.html" id="nextLink">🎉 You did it! Click here to move on.</a>
   </div>
   </div>
 </div>
@@ -48,7 +46,7 @@
 
   function checkPassword() {
     const input = document.getElementById("password").value;
-    const correctPassword = "firework";
+    const correctPassword = "green";
     const clue = document.getElementById("clue");
     const error = document.getElementById("error");
 

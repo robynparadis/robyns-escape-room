@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Team Clue 1</title>
+  <title>Blue Team Clue 3</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="page-content">
   <h1 class="blueteam">Great Job, Blue Team!</h1>
-    <h2>Clue #1</h2>
+    <h2>Clue #3</h2>
        
         <p>
-          You're moving along at a good pace, but I still don't think you'll be able to escape. Red Team is on your heels, and they're probably smarter than you. <br><br>After all, my favorite person is on their team...
+            This one is difficult, I'll admit. I'm losing faith in you, especially because you have <span class="italic">them</span> on your team. You know the one. I think they're dragging you down. Want me to get rid of them?
         </p>
 
         <p class="good-info">
           <strong>Here's the location where you'll find your next clue: </strong><br><br>
-          "If you've watched with care and steady pace,<br>
-          The answers hide in every space.<br>
-          Now follow the shuffle where the stakes will grow-<br>
-          Where the barrel breaks in two, below."
+          "Where heat once danced and meals were made,<br>
+          Ashes whisper secrets where fire once played."
         </p>
 
   <h2>Enter the password to unlock the next clue</h2>
@@ -30,8 +28,8 @@
 
   <div id="error"></div>
   <div id="clue">
-    <img src="../Images/laugh.png" alt="Image of Robyn laughing"><br>
-    <a href="blue-clue-2.html" id="nextLink">🎉 You did it! Click here to move on.</a>
+    <img src="../Images/wtf.png"><br>
+    <a href="blue-clue-4.html" id="nextLink">🎉 You did it! Click here to move on.</a>
   </div>
   </div>
 </div>
@@ -48,7 +46,7 @@
 
   function checkPassword() {
     const input = document.getElementById("password").value;
-    const correctPassword = "firework";
+    const correctPassword = "4";
     const clue = document.getElementById("clue");
     const error = document.getElementById("error");
 

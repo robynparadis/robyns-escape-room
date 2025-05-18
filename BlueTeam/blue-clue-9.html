@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Team Clue 1</title>
+  <title>Blue Team Clue 9</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="page-content">
-  <h1 class="blueteam">Great Job, Blue Team!</h1>
-    <h2>Clue #1</h2>
+  <h1 class="blueteam">Almost Done, Blue Team!</h1>
+    <h2>Clue #9</h2>
        
         <p>
-          You're moving along at a good pace, but I still don't think you'll be able to escape. Red Team is on your heels, and they're probably smarter than you. <br><br>After all, my favorite person is on their team...
+            Keep solving, if it makes you feel safe. You'll need the gate code to be able to leave, and I encrypted it! HAHAHA!
         </p>
 
         <p class="good-info">
-          <strong>Here's the location where you'll find your next clue: </strong><br><br>
-          "If you've watched with care and steady pace,<br>
-          The answers hide in every space.<br>
-          Now follow the shuffle where the stakes will grow-<br>
-          Where the barrel breaks in two, below."
+          <strong>Here's the location where you'll find your LAST clue: </strong><br><br>
+          "The door stands near, your heart beats fast,<br>
+            But freedom's not so quick to grasp.<br>
+            Where weary soles have come to rest,<br>
+            A secret waits beneath your steps."
         </p>
 
-  <h2>Enter the password to unlock the next clue</h2>
+  <h2>🔒 Enter the gate code to escape 🗝️</h2>
   <input type="text" id="password" placeholder="Enter password" />
   <br>
   <button class="blue-button" onclick="checkPassword()">Submit</button>
 
   <div id="error"></div>
   <div id="clue">
-    <img src="../Images/laugh.png" alt="Image of Robyn laughing"><br>
-    <a href="blue-clue-2.html" id="nextLink">🎉 You did it! Click here to move on.</a>
+    <img src="../Images/hype.png"><br>
+    <p id="nextLink">🔓 <strong>YOU'VE ESCAPED!</strong><br>Go find Robyn & Josh!</p>
   </div>
   </div>
 </div>
@@ -48,7 +48,7 @@
 
   function checkPassword() {
     const input = document.getElementById("password").value;
-    const correctPassword = "firework";
+    const correctPassword = "330";
     const clue = document.getElementById("clue");
     const error = document.getElementById("error");
 
