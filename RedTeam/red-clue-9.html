@@ -3,33 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Red Team Clue 7</title>
+  <title>Red Team Clue 9</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
   <div class="page-content">
-  <h1 class="redteam">Let's Go, Red Team!</h1>
-    <h2>Clue #7</h2>
+  <h1 class="redteam">Almost Done, Red Team!</h1>
+    <h2>Clue #9</h2>
       
         <p>
-          You're getting a little too quick. I'm only giving you two lines this time. You're welcome.
+          Keep solving, if it makes you feel safe. You'll need the gate code to be able to leave, and I encrypted it! HAHAHA!
         </p>
 
         <p class="good-info">
-            <strong>Here's the location where you'll find your next clue:</strong><br><br>
-            “Round and black, it spins with glee,<br>
-            The clue you need is where feet swing free."<br>
+            <strong>Here's the location where you'll find your LAST clue:</strong><br><br>
+            The door stands near, your heart beats fast,<br>
+            But freedom's not so quick to grasp.<br>
+            Where weary soles have come to rest,<br>
+            A secret waits beneath your steps.
         </p>
 
-  <h2>Enter the password to unlock the next clue</h2>
+  <h2>🔒 Enter the gate code to escape 🗝️</h2>
   <input type="text" id="password" placeholder="Enter password" />
   <br>
   <button class="red-button" onclick="checkPassword()">Submit</button>
 
   <div id="error"></div>
   <div id="clue">
-    <img src="/Images/dead.png"><br>
-    <a href="red-clue-8.html" id="nextLink">🎉 You did it! Click here to move on.</a>
+    <img src="/Images/hype.png"><br>
+    <p id="nextLink">🔓 <strong>YOU'VE ESCAPED!</strong><br>Go find Robyn & Josh!</p>
   </div>
   </div>
 
@@ -45,7 +47,7 @@
 
   function checkPassword() {
     const input = document.getElementById("password").value;
-    const correctPassword = "color";
+    const correctPassword = "330";
     const clue = document.getElementById("clue");
     const error = document.getElementById("error");
 
