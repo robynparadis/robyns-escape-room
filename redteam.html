@@ -6,7 +6,7 @@
     <title>Hi, Red Team!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="red-team">
   <div class="page-content">
     <h1 class="redteam">Hi, Red Team!</h1>
       <h2>Welcome to Sylvan Lake</h2>
@@ -31,7 +31,7 @@
             To unlock your first clue, <br>go to the <strong>bar downstairs</strong>. 🍹
           </p>
 
-        <h2>Enter the correct password to unlock the next clue</h2>
+        <h2 class="subdued-h2">Enter the correct password to unlock the next clue</h2>
         <input type="text" id="password" placeholder="Enter password" />
         <br>
         <button class="red-button" onclick="checkPassword()">Submit</button>
@@ -45,45 +45,55 @@
 
       <script>
         let incorrectAttemptCount = 0; // Track the number of incorrect attempts
-      
+
         const incorrectMessages = [
           "Incorrect password. Try again.",
           "Still wrong. Think harder.",
           "Nope. You suck.",
           "That's not it either. Are you sure you even know me?"
         ];
-      
-        function checkPassword() {
-          const input = document.getElementById("password").value;
-          const correctPassword = "vatpub";
-          const clue = document.getElementById("clue");
-          const error = document.getElementById("error");
-      
-          if (input.toLowerCase() === correctPassword.toLowerCase()) {
-            clue.style.display = "block";
-            error.textContent = "";
 
-            clue.scrollIntoView({ behavior: "smooth" });
-          } else {
-            clue.style.display = "none";
-            // Show rotating incorrect messages
-            error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
-            incorrectAttemptCount++;
-            error.scrollIntoView({ behavior: "smooth" });
-          }
+        function checkPassword() {
+        let rawInput = document.getElementById("password").value;
+        let input = rawInput.replace(/\s+/g, '').toLowerCase(); // Strip spaces and lowercase
+        const correctPassword = "vatpub";
+        const clue = document.getElementById("clue");
+        const error = document.getElementById("error");
+        error.style.display = "block";  // Show the error box
+          error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+
+
+        if (input === correctPassword.toLowerCase()) {
+          clue.style.display = "block";
+          error.style.display = "none";
+          error.textContent = "";
+          clue.classList.add("green-glow"); 
+          clue.scrollIntoView({ behavior: "smooth" });
+        } else {
+        clue.style.display = "none";
+        error.style.display = "block";
+        error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+        incorrectAttemptCount++;
+
+        // Add shake animation to input box
+        const inputField = document.getElementById("password");
+        inputField.classList.add("shake");
+
+        // Remove the class after animation ends so it can be triggered again
+        inputField.addEventListener("animationend", function handler() {
+          inputField.classList.remove("shake");
+          inputField.removeEventListener("animationend", handler);
+        });
+
+        error.scrollIntoView({ behavior: "smooth" });
         }
-      
+        }
+
         // Optional: allow pressing Enter key to submit
         document.getElementById("password").addEventListener("keypress", function(e) {
           if (e.key === "Enter") {
             checkPassword();
           }
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-          const footer = document.getElementById('footer');
-          const footerHeight = footer.offsetHeight;
-          document.body.style.paddingBottom = `${footerHeight + 20}px`; // 20px buffer
         });
 
       </script>
