@@ -6,13 +6,13 @@
   <title>Blue Team Clue 6</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="blue-team">
 <div class="page-content">
-  <h1 class="blueteam">Excellent Work, Blue Team!</h1>
+  <h1 class="blueteam">Excellent Work, <br>Blue Team!</h1>
     <h2>Clue #6</h2>
        
         <p>
-            You absolute FOOLS. You think you can outsmart me? Good luck finding <span class="italic">this</span> location!
+            You absolute FOOLS. You think you can outsmart me? Good luck finding <span class="italic">this</span> hiding spot!
         </p>
 
         <p class="good-info">
@@ -21,7 +21,7 @@
           The clue you need is where feet swing free."
         </p>
 
-  <h2>Enter the password to unlock the next clue</h2>
+  <h2 class="subdued-h2">Enter the password to unlock the next clue</h2>
   <input type="text" id="password" placeholder="Enter password" />
   <br>
   <button class="blue-button" onclick="checkPassword()">Submit</button>
@@ -45,22 +45,39 @@
   ];
 
   function checkPassword() {
-    const input = document.getElementById("password").value;
-    const correctPassword = "green";
-    const clue = document.getElementById("clue");
-    const error = document.getElementById("error");
+  let rawInput = document.getElementById("password").value;
+  let input = rawInput.replace(/\s+/g, '').toLowerCase(); // Strip spaces and lowercase
+  const correctPassword = "green";
+  const clue = document.getElementById("clue");
+  const error = document.getElementById("error");
+  error.style.display = "block";  // Show the error box
+    error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
 
-    if (input.toLowerCase() === correctPassword.toLowerCase()) {
-      clue.style.display = "block";
-      error.textContent = "";
-      clue.scrollIntoView({ behavior: "smooth" });
-    } else {
-      clue.style.display = "none";
-      // Show rotating incorrect messages
-      error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
-      incorrectAttemptCount++;
-      error.scrollIntoView({ behavior: "smooth" });
-    }
+
+  if (input === correctPassword.toLowerCase()) {
+    clue.style.display = "block";
+    error.style.display = "none";
+    error.textContent = "";
+    clue.classList.add("green-glow"); 
+    clue.scrollIntoView({ behavior: "smooth" });
+  } else {
+  clue.style.display = "none";
+  error.style.display = "block";
+  error.textContent = incorrectMessages[incorrectAttemptCount % incorrectMessages.length];
+  incorrectAttemptCount++;
+
+  // Add shake animation to input box
+  const inputField = document.getElementById("password");
+  inputField.classList.add("shake");
+
+  // Remove the class after animation ends so it can be triggered again
+  inputField.addEventListener("animationend", function handler() {
+    inputField.classList.remove("shake");
+    inputField.removeEventListener("animationend", handler);
+  });
+
+  error.scrollIntoView({ behavior: "smooth" });
+  }
   }
 
   // Optional: allow pressing Enter key to submit
